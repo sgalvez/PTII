@@ -1,4 +1,4 @@
-package com.sgalvez.airports.model;
+package com.sgalvez.airports.models;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -15,7 +15,7 @@ public class Airport {
 
     @Id
     @NotNull
-    private String airportcode;
+    private String airportCode;
     private String cityname;
     private long worldareacode;
 
@@ -24,8 +24,8 @@ public class Airport {
     }
 
     //TODO: Mejorar la definicion de la entidad
-    public Airport(String airportcode){
-        this.airportcode = airportcode;
+    public Airport(String airportCode){
+        this.airportCode = airportCode;
     }
 
     public Airport(String cityname, long worldareacode){
@@ -34,7 +34,7 @@ public class Airport {
     }
 
     public String getAirportcode(){
-        return airportcode;
+        return airportCode;
     }
 
     public String getCityname(){

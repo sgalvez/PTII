@@ -1,4 +1,4 @@
-package com.sgalvez.airports.config;
+package com.sgalvez.airports.configs;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

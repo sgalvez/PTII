@@ -1,4 +1,4 @@
-package com.sgalvez.airports.model;
+package com.sgalvez.airports.models;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,7 +1,7 @@
-package com.sgalvez.airports.controller;
+package com.sgalvez.airports.controllers;
 
-import com.sgalvez.airports.model.Airport;
-import com.sgalvez.airports.model.AirportDAO;
+import com.sgalvez.airports.models.Airport;
+import com.sgalvez.airports.models.AirportDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
