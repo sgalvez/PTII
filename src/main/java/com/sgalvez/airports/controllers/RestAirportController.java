@@ -14,24 +14,21 @@ import java.util.Collection;
  */
 
 @RestController
-@RequestMapping("/airports")
+@RequestMapping("/")
 public class RestAirportController {
 
     @Autowired
     private AirportRepository airportRepository;
 
-    @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<Collection<Airport>> getAllPies(){
+
+    @RequestMapping(method = RequestMethod.GET, value = "getAll")
+    public ResponseEntity<Collection<Airport>> getAllData(){
         return new ResponseEntity<>((Collection<Airport>) airportRepository.findAll(), HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/{airportCode}")
-    public ResponseEntity<Airport> getPieWithId(@PathVariable String airportCode) {
-        return new ResponseEntity<>(airportRepository.findOne(airportCode),HttpStatus.OK);
-    }
 
-    @RequestMapping(method = RequestMethod.GET, value = "airportCode")
-    public ResponseEntity<Collection<Airport>> getCityByAirportCode(@RequestParam(value = "airportCode") String airportCode){
+    @RequestMapping(method = RequestMethod.GET, value = "getCity")
+    public ResponseEntity<Collection<Airport>> getByAirportCode(@RequestParam(value = "airportCode") String airportCode){
         return new ResponseEntity<>(airportRepository.findByAirportCode(airportCode), HttpStatus.OK);
     }
 }
