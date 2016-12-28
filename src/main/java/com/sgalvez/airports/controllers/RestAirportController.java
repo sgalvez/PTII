@@ -14,6 +14,7 @@ import java.util.Collection;
  */
 
 @RestController
+@CrossOrigin
 @RequestMapping("/")
 public class RestAirportController {
 
