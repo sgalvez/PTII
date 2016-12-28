@@ -1,7 +1,7 @@
 # airportsAPI
 Doc en progreso
 
-Springboot
-Mysql
-Docker
-Kong gateway
+* Springboot
+* Mysql
+* Docker
+* Kong gateway
