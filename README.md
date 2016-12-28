@@ -5,3 +5,7 @@ Doc en progreso
 * Mysql
 * Docker
 * Kong gateway
+
+Desde la raiz:
+
+mvn spring-boot:run
