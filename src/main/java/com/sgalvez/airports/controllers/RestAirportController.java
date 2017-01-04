@@ -14,12 +14,12 @@ import java.util.Collection;
  */
 
 @RestController
-@RequestMapping("/")
+@CrossOrigin
+@RequestMapping("/airports")
 public class RestAirportController {
 
     @Autowired
     private AirportRepository airportRepository;
-
 
     @RequestMapping(method = RequestMethod.GET, value = "getAll")
     public ResponseEntity<Collection<Airport>> getAllData(){
