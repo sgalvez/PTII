@@ -6,6 +6,7 @@ Doc en progreso
 * Docker
 * Kong gateway
 
-Desde la raiz:
-
+Desde el directorio airportREST
 mvn spring-boot:run
+
+
