@@ -26,7 +26,6 @@ public class RestAirportController {
         return new ResponseEntity<>((Collection<Airport>) airportRepository.findAll(), HttpStatus.OK);
     }
 
-
     @RequestMapping(method = RequestMethod.GET, value = "getCity")
     public ResponseEntity<Collection<Airport>> getByAirportCode(@RequestParam(value = "airportCode") String airportCode){
         return new ResponseEntity<>(airportRepository.findByAirportCode(airportCode), HttpStatus.OK);
