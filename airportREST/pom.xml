@@ -70,7 +70,7 @@
     <start-class>com.sgalvez.airports.Application</start-class>
     <java.version>1.8</java.version>
     <spring.version>4.2.2.RELEASE</spring.version>
-    <docker.image.prefix>springio</docker.image.prefix>
+    <docker.image.prefix>sgalvez</docker.image.prefix>
   </properties>
 
 
