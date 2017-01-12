@@ -21,7 +21,6 @@ public class Application {
     }
 
 
-/** TODO: Eliminar documentacion metadata actual en swagger **/
     @Bean
     public Docket swaggerSettings() {
         return new Docket(DocumentationType.SWAGGER_2)
