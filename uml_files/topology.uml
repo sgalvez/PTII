@@ -21,7 +21,7 @@ node g2 [<b>vgateway2nyc</b>
 node g3 [<b>vgateway3nyc</b>
         <i><<Docker Container>></i>]
 
-node d1 [<b>vdatastore1nyc</b>
+node d1 [<b>vdatastore2nyc</b>
         <i><<Docker Container>></i>]    
 
 node c1 [<b>vswagger1nyc</b>
