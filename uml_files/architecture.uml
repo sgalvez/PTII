@@ -1,0 +1,15 @@
+@startuml
+
+scale 5/6
+skinparam linetype ortho
+
+cloud "Atlantic Cloud" {
+
+[<b>Master Node</b>] <<gwmaster1>> as k0 
+[<b>Slave Node</b>] <<API Gateway>> as k1 #Yellow
+[<b>Slave Node</b>] <<API Gateway>> as k2 #Yellow
+
+}
+
+
+@enduml
