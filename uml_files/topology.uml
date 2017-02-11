@@ -1,0 +1,64 @@
+@startuml
+
+scale 5/6
+skinparam linetype ortho
+
+cloud "Atlantic Cloud" {
+
+node v1 #Yellow [<b>vdocker1nyc</b>
+                <i><<Cloud Server>></i>]
+node v2 #Yellow [<b>vdocker2nyc</b>
+                <i><<Cloud Server>></i>]
+node v3 #Yellow [<b>vdocker3nyc</b>
+                <i><<Cloud Server>></i>]
+
+node g1 [<b>vgateway1nyc</b>
+        <i><<Docker Container>></i>]
+
+node g2 [<b>vgateway2nyc</b>
+        <i><<Docker Container>></i>]
+
+node g3 [<b>vgateway3nyc</b>
+        <i><<Docker Container>></i>]
+
+node d1 [<b>vdatastore2nyc</b>
+        <i><<Docker Container>></i>]    
+
+node c1 [<b>vswagger1nyc</b>
+        <i><<Docker Container>></i>]
+
+[<b>Load Balancer</b>] <<Haproxy>> as l3
+
+
+[<b>Analytics App</b>] <<Splunk>> as a1
+
+'Notes
+note left of v1:<b>Internal Network</b>\nIP: 10.50.56.1\nIP range: 10.50.56.1 - 10.50.56.25\nNetmask: 255.255.255.0\nGateway: 10.50.56.0
+note left of v2:<b>Internal Network</b>\nIP: 10.50.56.2\nIP range: 10.50.56.1 - 10.50.56.25\nNetmask: 255.255.255.0\nGateway: 10.50.56.0
+note left of v3:<b>Internal Network</b>\nIP: 10.50.56.3\nIP range: 10.50.56.1 - 10.50.56.25\nNetmask: 255.255.255.0\nGateway: 10.50.56.0
+
+note right of g1:<b>Internal Network</b>\nIP: 10.50.56.1\nPort: 8000
+note left of g2:<b>Internal Network</b>\nIP: 10.50.56.2\nPort: 8000
+note left of g3:<b>Internal Network</b>\nIP: 10.50.56.3\nPort: 8000
+note left of a1:<b>Listening</b>\n45.58.35.245:9000
+
+note left of l3:<b>Listening</b>\n45.58.44.195:80
+
+note right of d1:<b>Listening</b>\n10.50.56.2:9042
+
+
+
+
+
+}
+
+'Enlances de maquinas hosts
+v1 -- g1
+v2 -- g2
+v3 -- g3
+v1 -- a1
+l3 -- v3
+d1 -- v2
+c1 -- v3
+
+@enduml
