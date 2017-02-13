@@ -27,7 +27,7 @@ public class Application {
                 .select()
                 .apis(RequestHandlerSelectors.any())
                 //.paths(PathSelectors.any())
-                .paths(PathSelectors.ant("/airports/*"))
+                .paths(PathSelectors.ant("/*"))
                 .build()
                 .pathMapping("/");
     }
