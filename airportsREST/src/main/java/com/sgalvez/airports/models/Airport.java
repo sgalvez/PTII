@@ -22,6 +22,12 @@ public class Airport {
     private String countryName;
     private String countryCode;
     private String timezone;
+
+    public Airport(String lat, String lon) {
+        this.lat = lat;
+        this.lon = lon;
+    }
+
     private String lat;
     private String lon;
     private int numAirports;
@@ -119,7 +125,6 @@ public class Airport {
     public Airport() {
 
     }
-
 
 
 }
