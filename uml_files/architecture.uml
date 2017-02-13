@@ -3,13 +3,42 @@
 scale 5/6
 skinparam linetype ortho
 
-cloud "Atlantic Cloud" {
+[<b>Load Balancer</b>] <<haproxy>> as l1
 
-[<b>Master Node</b>] <<gwmaster1>> as k0 
-[<b>Slave Node</b>] <<API Gateway>> as k1 #Yellow
-[<b>Slave Node</b>] <<API Gateway>> as k2 #Yellow
+[<b>Frontend APP</b>] <<webapp>> as w1
+[<b>Frontend APP</b>] <<webapp>> as w2
 
+frame Gateway as gw{
+[<b>Node1</b>] <<API Gateway>> as g1 #Yellow
+[<b>Node2</b>] <<API Gateway>> as g2 #Yellow
+[<b>Node3</b>] <<API Gateway>> as g3 #Yellow
+}
+[<b>API Datastore</b>] <<cassandra>> as d1 #Orange
+
+
+frame "Backend" as internal{
+[<b>Airports API</b>] <<SpringBoot App>> as j1
+[<b>Timezones API</b>] <<SpringBoot App>> as j2
+
+database "SOR" as db
+j1 -- db
+j2 -- db
 }
 
+'Connectors
+
+w1 .. l1: Port 80
+w2 .. l1: Port 80
+
+l1 .. g1: Port 8000
+l1 .. g2: Port 8000
+l1 .. g3: Port 8000
+
+g1 .. d1: Metadata
+g2 .. d1: Metadata
+g3 .. d1: Metadata
+
+gw == j1: Register
+gw == j2: Register
 
 @enduml
