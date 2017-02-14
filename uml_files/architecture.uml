@@ -5,25 +5,27 @@ skinparam linetype ortho
 
 [<b>Load Balancer</b>] <<haproxy>> as l1
 
+cloud "Internet"{
 [<b>Frontend APP</b>] <<webapp>> as w1
 [<b>Frontend APP</b>] <<webapp>> as w2
+}
 
-frame Gateway as gw{
 [<b>Node1</b>] <<API Gateway>> as g1 #Yellow
 [<b>Node2</b>] <<API Gateway>> as g2 #Yellow
 [<b>Node3</b>] <<API Gateway>> as g3 #Yellow
-}
+note left of g3
+    Gateway Cluster
+end note
 [<b>API Datastore</b>] <<cassandra>> as d1 #Orange
+note left of d1
+    <b>Replicacion de metadata</b>
+    Registro de APIs
+    Usuarios
+    Api keys
+end note
 
 
-frame "Backend" as internal{
 [<b>Airports API</b>] <<SpringBoot App>> as j1
-[<b>Timezones API</b>] <<SpringBoot App>> as j2
-
-database "SOR" as db
-j1 -- db
-j2 -- db
-}
 
 'Connectors
 
@@ -38,7 +40,6 @@ g1 .. d1: Metadata
 g2 .. d1: Metadata
 g3 .. d1: Metadata
 
-gw == j1: Register
-gw == j2: Register
+g3 == j1: Register
 
 @enduml
