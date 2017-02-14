@@ -1,0 +1,83 @@
+<div class="container">
+    <a href="#/consumers/add" class="btn-floating btn-large waves-effect waves-light right" ng-show="consumers.length >= 1">
+        <i class="material-icons">agregar</i>
+    </a>
+
+    <h3 class="header">Consumidores</h3>
+
+    <p class="flow-text center" ng-show="total == 0" style="margin-top:50px;">
+        No has definido ningun consumidor aun en el Gateway
+    </p>
+
+    <p class="flow-text center" ng-show="consumers.length == 0 && total > 0" style="margin-top:50px;">
+          Fin de la lista.
+    </p>
+
+    <p class="flow-text left" ng-show="consumers.length > 0" style="margin-top:50px;">
+        Mostrando {{consumers.length}} Consumidores / {{total}}
+    </p>
+
+    <p class="right" ng-show="next" style="margin-top:50px;">
+        <a href="#/consumers?offset={{offset}}&size={{size}}" class="waves-effect waves-light btn">
+            <i class="material-icons left">navigate_next</i>
+            AvPag
+        </a>
+    </p>
+
+    <p class="center" ng-show="total == 0">
+        <a href="#/consumers/add" class="waves-effect waves-light btn">
+            <i class="material-icons left">add_box</i>
+            Agregar Consumidor
+        </a>
+    </p>
+
+     <p class="center" ng-show="consumers.length == 0 && total > 0">
+        <a href="#/consumers?size={{size}}" class="waves-effect waves-light btn">
+            <i class="material-icons left">skip_previous</i>
+            Primera Pagina
+        </a>
+    </p>
+
+    <table class="bordered" ng-show="consumers.length >= 1">
+        <thead>
+        <tr>
+            <th>Username</th>
+            <th>Custom id</th>
+            <th>Created</th>
+            <th></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr ng-repeat="consumer in consumers">
+            <td>{{consumer.username}} <p ng-show="!consumer.username">nope</p></td>
+            <td><a ng-show="gelato" href="https://gelato.io/app/developers/{{consumer.custom_id}}">{{consumer.custom_id}}</a>
+                <p ng-show="!gelato">{{consumer.custom_id}}</p>
+                <p ng-show="!consumer.custom_id">nope</p></td>
+            <td>{{consumer.created_at | date}}</td>
+            <td class="right">
+                <a class="btn-floating waves-effect waves-light" href="#/consumers/{{consumer.id}}">
+                    <i class="material-icons">mode_edit</i>
+                </a>
+                <a class="btn-floating waves-effect waves-light blue" href="#/consumers/{{consumer.id}}/plugins">
+                    <i class="material-icons">extension</i>
+                </a>
+                <a class="btn-floating waves-effect waves-light red modal-trigger" ng-click="showDeleteModal(consumer.username, consumer.id)">
+                    <i class="material-icons">delete</i>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal Structure -->
+<div id="deleteConsumer" class="modal">
+    <div class="modal-content">
+        <h5>Realmente quieres eliminar el consumidor "{{current.username}}"?</h5>
+    </div>
+    <div class="modal-footer">
+        <a class="waves-effect waves-green btn" ng-click="abortDelete()">Noooooo!</a>
+        <a class="waves-effect waves-red btn red" ng-click="performDelete()" style="margin-right:10px">Si</a>
+    </div>
+</div>
